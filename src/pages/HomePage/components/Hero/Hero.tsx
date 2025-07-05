@@ -11,7 +11,7 @@ export const Hero = () => {
     <>
       <HeroSection>
         <img
-          src="public/hero.jpg"
+          src="/hero.jpg"
           style={{
             display: "block",
             width: "100%",

@@ -67,7 +67,7 @@ export const SelectedTreatments = () => {
         margin="40px 0 100px 0"
       >
         <img
-          src="public/pricesImage.jpg"
+          src="/pricesImage.jpg"
           alt="Hero Image"
           style={{
             width: "300px",

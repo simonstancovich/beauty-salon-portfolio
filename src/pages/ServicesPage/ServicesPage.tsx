@@ -6,7 +6,7 @@ const services = [
     title: "Hair",
     description:
       "Indulge in precision cuts and luxurious hair treatments designed to rejuvenate your locks and elevate your signature style.",
-    image: "public/pricesImage.jpg",
+    image: "/pricesImage.jpg",
     treatments: [
       { treatment: "Haircut", price: "$50" },
       { treatment: "Coloring", price: "$100" },
@@ -19,7 +19,7 @@ const services = [
     title: "Nails",
     description:
       "Pamper your hands and feet with our exquisite nail services, from classic manicures to intricate nail art.",
-    image: "public/nailsPricesImage.jpg",
+    image: "/nailsPricesImage.jpg",
     treatments: [
       { treatment: "Manicure", price: "$30" },
       { treatment: "Pedicure", price: "$40" },
@@ -32,7 +32,7 @@ const services = [
     title: "Face",
     description:
       "Experience rejuvenating facials and skin treatments that enhance your natural glow and promote healthy skin.",
-    image: "public/FacePricesImage.jpg",
+    image: "/FacePricesImage.jpg",
     treatments: [
       { treatment: "Facial", price: "$70" },
       { treatment: "Exfoliation", price: "$60" },
@@ -45,7 +45,7 @@ const services = [
     title: "Body",
     description:
       "Indulge in luxurious body treatments that relax, detoxify, and rejuvenate your skin, leaving you feeling refreshed.",
-    image: "public/BodyPricesImage.jpg",
+    image: "/BodyPricesImage.jpg",
     treatments: [
       { treatment: "Full Body Massage", price: "$100" },
       { treatment: "Body Scrub", price: "$80" },

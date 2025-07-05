@@ -9,24 +9,24 @@ export const Categories = [
     title: "Hair",
     description:
       "Experience the art of precision haircuts tailored to your style.",
-    image: "public/hair.jpg",
+    image: "/hair.jpg",
   },
   {
     icon: <GiLipstick />,
     title: "Makeup",
     description: "Transform your look with our expert coloring services.",
-    image: "public/makeup.jpg",
+    image: "/makeup.jpg",
   },
   {
     icon: <MdFaceRetouchingNatural />,
     title: "Skin",
     description: "Elevate your style with our professional hair styling.",
-    image: "public/skin.jpg",
+    image: "/skin.jpg",
   },
   {
     icon: <LiaSpaSolid />,
     title: "Body",
     description: "Elevate your style with our professional hair styling.",
-    image: "public/body.jpg",
+    image: "/body.jpg",
   },
 ];
