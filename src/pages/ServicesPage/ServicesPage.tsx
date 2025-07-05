@@ -1,6 +1,5 @@
 import { FlexContainer } from "../../components/FlexContainer";
 import { StyledLink } from "../../components/StyledLink";
-import { selectedTreatments } from "../../data/selectedTreatments";
 
 const services = [
   {
