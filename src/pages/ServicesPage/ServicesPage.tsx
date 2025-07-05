@@ -32,7 +32,7 @@ const services = [
     title: "Face",
     description:
       "Experience rejuvenating facials and skin treatments that enhance your natural glow and promote healthy skin.",
-    image: "/FacePricesImage.jpg",
+    image: "/facePricesImage.jpg",
     treatments: [
       { treatment: "Facial", price: "$70" },
       { treatment: "Exfoliation", price: "$60" },
@@ -45,7 +45,7 @@ const services = [
     title: "Body",
     description:
       "Indulge in luxurious body treatments that relax, detoxify, and rejuvenate your skin, leaving you feeling refreshed.",
-    image: "/BodyPricesImage.jpg",
+    image: "/bodyPricesImage.jpg",
     treatments: [
       { treatment: "Full Body Massage", price: "$100" },
       { treatment: "Body Scrub", price: "$80" },
