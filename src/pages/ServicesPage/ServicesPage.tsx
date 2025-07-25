@@ -2,6 +2,7 @@ import { useLocation } from "react-router";
 import { FlexContainer } from "../../components/FlexContainer";
 import { StyledLink } from "../../components/StyledLink";
 import React, { useEffect, useMemo } from "react";
+import styled from "styled-components";
 
 const services = [
   {
@@ -58,10 +59,83 @@ const services = [
   },
 ];
 
+const TitleContainer = styled.div`
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+
+  text-align: center;
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    max-width: 250px;
+    align-items: center;
+  }
+`;
+
+const TreatmentsContainer = styled(FlexContainer)<{
+  flexDirection: "row" | "row-reverse";
+}>`
+  flex-direction: ${({ flexDirection }) => flexDirection};
+  width: 100%;
+  height: 500px;
+  gap: 8px;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 40px 0 100px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    flex-direction: column;
+    max-width: 250px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    gap: 8px;
+    margin: 0 0 50px 0;
+  }
+`;
+
+const TreatmentImage = styled.img`
+  width: 300px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    max-width: 250px;
+    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+`;
+
+const TreatmentCategoryContainer = styled(FlexContainer)`
+  width: 500px;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
+const TreatmentsTextContainer = styled(FlexContainer)`
+  width: 500px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    max-width: 250px;
+  }
+`;
+
+const TreatmentTextContainer = styled(FlexContainer)`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+`;
+
 export const ServicesPage = () => {
   const location = useLocation();
 
-  // 1️⃣ Create dynamic refs for each category
   const sectionRefs = useMemo(() => {
     const refs: { [key: string]: React.RefObject<HTMLDivElement | null> } = {};
     services.forEach((cat) => {
@@ -70,7 +144,6 @@ export const ServicesPage = () => {
     return refs;
   }, []);
 
-  // 2️⃣ Scroll to section if hash exists
   useEffect(() => {
     const hash = decodeURIComponent(location.hash.replace("#", ""));
     const ref = sectionRefs[hash];
@@ -80,68 +153,34 @@ export const ServicesPage = () => {
   }, [location.hash, sectionRefs]);
   return (
     <FlexContainer>
-      <h1>Services</h1>
-      <span>
-        Our curated menu of luxury treatments—designed to leave you radiant and
-        confident.
-      </span>
+      <TitleContainer>
+        <h1>Services</h1>
+        <span>
+          Our curated menu of luxury treatments—designed to leave you radiant
+          and confident.
+        </span>
+      </TitleContainer>
       {services.map((service, index) => (
-        <FlexContainer
-          width="100%"
-          height="500px"
-          style={{ gap: "8px" }}
+        <TreatmentsContainer
           flexDirection={index % 2 === 0 ? "row" : "row-reverse"}
-          justifyContent="center"
-          alignItems="flex-start"
-          margin="40px 0 100px 0"
         >
-          <img
-            src={service.image}
-            alt="Hero Image"
-            style={{
-              width: "300px",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "8px",
-            }}
-          />
-          <FlexContainer
-            width="500px"
-            height="100%"
-            flexDirection="column"
-            justifyContent="space-between"
-            alignItems="flex-start"
-          >
-            <FlexContainer
-              width="500px"
-              height="100%"
-              flexDirection="column"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              gap="8px"
-            >
+          <TreatmentImage src={service.image} alt="Hero Image" />
+          <TreatmentCategoryContainer>
+            <TreatmentsTextContainer>
               <h1>{service.title}</h1>
               <span>{service.description}</span>
               {service.treatments.map((treatment, index) => (
-                <FlexContainer
-                  key={index}
-                  width="100%"
-                  height="auto"
-                  flexDirection="row"
-                  justifyContent="space-between"
-                  alignItems="flex-start"
-                  style={{ borderBottom: "1px solid #ccc", padding: "8px 0" }}
-                >
+                <TreatmentTextContainer key={index}>
                   <p>{treatment.treatment}</p>
                   <p>{treatment.price}</p>
-                </FlexContainer>
+                </TreatmentTextContainer>
               ))}
-            </FlexContainer>
+            </TreatmentsTextContainer>
             <StyledLink to={`/treatments#${service.title}`}>
               View All Treatments
             </StyledLink>
-          </FlexContainer>
-        </FlexContainer>
+          </TreatmentCategoryContainer>
+        </TreatmentsContainer>
       ))}
     </FlexContainer>
   );

@@ -41,6 +41,10 @@ const Slider = styled.div`
   max-width: 800px;
   margin: 0 auto;
   height: 150px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+    margin-top: 125px;
+  }
 `;
 
 const Slide = styled.div<{ active: boolean }>`

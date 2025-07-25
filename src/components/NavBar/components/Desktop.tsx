@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
-import { Logo } from "./Logo";
-import { FlexContainer } from "./FlexContainer";
+import { FlexContainer } from "../../FlexContainer";
+import { Logo } from "../../Logo";
 
 const Nav = styled.nav`
   box-sizing: border-box;
@@ -96,7 +96,7 @@ const DropdownItem = styled.li`
   }
 `;
 
-const NavBar = () => {
+const Desktop = () => {
   const navigate = useNavigate();
 
   const handleCategoryClick = (category: string) => {
@@ -150,4 +150,4 @@ const NavBar = () => {
     </Nav>
   );
 };
-export default NavBar;
+export default Desktop;

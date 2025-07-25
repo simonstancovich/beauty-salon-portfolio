@@ -1,6 +1,7 @@
 import { useLocation } from "react-router";
 import { useEffect } from "react";
 import { FlexContainer } from "../../../../components/FlexContainer";
+import styled from "styled-components";
 
 const services = [
   {
@@ -250,63 +251,80 @@ export const TreatmentsContainer = () => {
     }
   }, [location]);
 
+  const TreatmentCategoryContainer = styled(FlexContainer)`
+    width: 100%;
+    height: 500px;
+    gap: 8px;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 40px 0 100px 0;
+
+    @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+      flex-direction: column;
+      max-width: 300px;
+      align-items: center;
+      height: 100%;
+      gap: 8px;
+      margin: 0;
+    }
+  `;
+
+  const TreatmentsCategoryImage = styled.img`
+    width: 300px;
+    height: 100%;
+    flex-direction: cover;
+    border-radius: 8px;
+  `;
+
+  const TreatmentsContainer = styled(FlexContainer)`
+    width: 500px;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
+      flex-direction: column;
+      max-width: 300px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      height: 100%;
+      gap: 8px;
+      margin: 0 0 50px 0;
+    }
+  `;
+
+  const TreatmentContainer = styled(FlexContainer)`
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+  `;
+
   return (
     <FlexContainer>
       {services.map((service, index) => (
-        <FlexContainer
+        <TreatmentCategoryContainer
           key={service.title}
           as="section"
           id={service.title}
-          width="100%"
-          height="500px"
-          style={{ gap: "8px" }}
           flexDirection={index % 2 === 0 ? "row" : "row-reverse"}
-          justifyContent="center"
-          alignItems="flex-start"
-          margin="40px 0 100px 0"
         >
-          <img
+          <TreatmentsCategoryImage
             src={service.image}
             alt={`${service.title} Image`}
-            style={{
-              width: "300px",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "8px",
-            }}
           />
-          <FlexContainer
-            width="500px"
-            height="100%"
-            flexDirection="column"
-            justifyContent="space-between"
-            alignItems="flex-start"
-          >
-            <FlexContainer
-              width="500px"
-              height="100%"
-              flexDirection="column"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              gap="8px"
-            >
-              <h1>{service.title}</h1>
-              <span>{service.description}</span>
-              {service.treatments.map((treatment, idx) => (
-                <FlexContainer
-                  key={idx}
-                  width="100%"
-                  height="auto"
-                  flexDirection="row"
-                  justifyContent="space-between"
-                >
-                  <span>{treatment.treatment}</span>
-                  <span>{treatment.price}</span>
-                </FlexContainer>
-              ))}
-            </FlexContainer>
-          </FlexContainer>
-        </FlexContainer>
+          <TreatmentsContainer>
+            <h1>{service.title}</h1>
+            <span>{service.description}</span>
+            {service.treatments.map((treatment, idx) => (
+              <TreatmentContainer key={idx}>
+                <span>{treatment.treatment}</span>
+                <span>{treatment.price}</span>
+              </TreatmentContainer>
+            ))}
+          </TreatmentsContainer>
+        </TreatmentCategoryContainer>
       ))}
     </FlexContainer>
   );

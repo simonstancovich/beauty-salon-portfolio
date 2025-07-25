@@ -4,6 +4,7 @@ import { Hero } from "./components/Hero/Hero";
 import SelectedTreatments from "./components/SelectedTreatments/SelectedTreatments";
 import Testimonials from "./components/Testimonials/Testimonials";
 import { useEffect, useState } from "react";
+import TreatmentsMenu from "./components/TreatmentsMenu/TreatmentsMenu";
 
 interface Service {
   title: string;
@@ -51,6 +52,8 @@ export const HomePage = () => {
       <SelectedTreatments
         heroTitle={data?.heroTitle}
         heroSubtitle={data?.heroSubtitle}
+      />
+      <TreatmentsMenu
         services={data?.services}
         treatmentsTitle={data?.treatmentsTitle}
         treatmentsSubtitle={data?.treatmentsSubtitle}
