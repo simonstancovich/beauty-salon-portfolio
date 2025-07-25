@@ -38,6 +38,7 @@ export const GlobalStyle = createGlobalStyle`
   input, textarea {
     padding: ${({ theme }) => theme.spacing.xs};
     border-radius: ${({ theme }) => theme.radius.md}; 
+    font-family:${({ theme }) => theme.typography.fonts.body};
     border: ${({ theme }) =>
       `${theme.border.thin} ${theme.border.style.solid} ${theme.colors.lipstick}`};
     width: 100%;
@@ -81,7 +82,6 @@ export const GlobalStyle = createGlobalStyle`
   h1 {
     font-size: ${({ theme }) => theme.typography.fontSize["3xl"]};
     line-height: 1.2;
-    /* margin-bottom: ${({ theme }) => theme.spacing.xs}; */
     @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
       font-size: ${({ theme }) => theme.typography.fontSize.xl}; 
     }
@@ -93,7 +93,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${({ theme }) => theme.typography.fontSize.lg};
     margin-bottom: ${({ theme }) => theme.spacing.xs};
     font-family: ${({ theme }) => theme.typography.fonts.heading};
-	  color: ${({ theme }) => theme.colors.white};
+	  color: ${({ theme }) => theme.colors.taupe};
     letter-spacing: 0.05em;
 
   }

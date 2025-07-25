@@ -60,7 +60,7 @@ export const SelectedTreatments: React.FC<SelectedTreatmentsProps> = ({
               }
               justifyContent="flex-start"
               alignItems="flex-end"
-              href="/"
+              href={`/treatments#${encodeURIComponent(card.title) || "/"}`}
             >
               <FlexContainer
                 flexDirection="row"
@@ -130,7 +130,7 @@ export const SelectedTreatments: React.FC<SelectedTreatmentsProps> = ({
               </FlexContainer>
             ))}
           </FlexContainer>
-          <StyledLink to="/">View All Treatments</StyledLink>
+          <StyledLink to="/treatments">View All Treatments</StyledLink>
         </FlexContainer>
       </FlexContainer>
     </>

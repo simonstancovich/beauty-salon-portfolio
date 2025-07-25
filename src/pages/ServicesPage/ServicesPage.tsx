@@ -1,5 +1,7 @@
+import { useLocation } from "react-router";
 import { FlexContainer } from "../../components/FlexContainer";
 import { StyledLink } from "../../components/StyledLink";
+import React, { useEffect, useMemo } from "react";
 
 const services = [
   {
@@ -57,6 +59,25 @@ const services = [
 ];
 
 export const ServicesPage = () => {
+  const location = useLocation();
+
+  // 1️⃣ Create dynamic refs for each category
+  const sectionRefs = useMemo(() => {
+    const refs: { [key: string]: React.RefObject<HTMLDivElement | null> } = {};
+    services.forEach((cat) => {
+      refs[cat.title] = React.createRef<HTMLDivElement>();
+    });
+    return refs;
+  }, []);
+
+  // 2️⃣ Scroll to section if hash exists
+  useEffect(() => {
+    const hash = decodeURIComponent(location.hash.replace("#", ""));
+    const ref = sectionRefs[hash];
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location.hash, sectionRefs]);
   return (
     <FlexContainer>
       <h1>Services</h1>
@@ -116,7 +137,9 @@ export const ServicesPage = () => {
                 </FlexContainer>
               ))}
             </FlexContainer>
-            <StyledLink to="/">View All Treatments</StyledLink>
+            <StyledLink to={`/treatments#${service.title}`}>
+              View All Treatments
+            </StyledLink>
           </FlexContainer>
         </FlexContainer>
       ))}

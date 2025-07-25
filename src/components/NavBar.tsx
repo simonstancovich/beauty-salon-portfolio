@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { Logo } from "./Logo";
 import { FlexContainer } from "./FlexContainer";
@@ -46,7 +46,6 @@ const DropdownContainer = styled.div`
   align-items: center;
 `;
 
-// the menu itself
 const DropdownMenu = styled.ul`
   position: absolute;
   top: 80%;
@@ -97,48 +96,58 @@ const DropdownItem = styled.li`
   }
 `;
 
-const NavBar = () => (
-  <Nav>
-    <Section flex="2">
-      <StyledLink to="https://facebook.com">
-        <FaFacebook size={20} />
-      </StyledLink>
-      <StyledLink to="https://instagram.com">
-        <FaInstagram size={20} />
-      </StyledLink>
-    </Section>
-    <Section flex="8">
-      <FlexContainer width="80px" justifyContent="center">
-        <StyledLink to="/" end>
-          Home
+const NavBar = () => {
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (category: string) => {
+    navigate(`/treatments#${encodeURIComponent(category)}`);
+  };
+  return (
+    <Nav>
+      <Section flex="2">
+        <StyledLink to="https://facebook.com">
+          <FaFacebook size={20} />
         </StyledLink>
-      </FlexContainer>
-
-      <DropdownContainer>
-        <FlexContainer width="80px" justifyContent="center">
-          <StyledLink to="/services">Services</StyledLink>
+        <StyledLink to="https://instagram.com">
+          <FaInstagram size={20} />
+        </StyledLink>
+      </Section>
+      <Section flex="8">
+        <FlexContainer width="85px" justifyContent="center">
+          <StyledLink to="/" end>
+            Home
+          </StyledLink>
         </FlexContainer>
-        <DropdownMenu>
-          {["hair", "face", "body", "skin"].map((sub) => (
-            <DropdownItem key={sub}>
-              <StyledLink to={`/services/${sub}`}>
-                {sub.charAt(0).toUpperCase() + sub.slice(1)}
-              </StyledLink>
-            </DropdownItem>
-          ))}
-        </DropdownMenu>
-      </DropdownContainer>
 
-      <Logo />
+        <DropdownContainer>
+          <FlexContainer width="85px" justifyContent="center">
+            <StyledLink to="/services">Services</StyledLink>
+          </FlexContainer>
+          <DropdownMenu>
+            {["Hair", "Nails", "Face", "Body"].map((sub) => (
+              <DropdownItem key={sub}>
+                <a
+                  onClick={() => handleCategoryClick(sub)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {sub}
+                </a>
+              </DropdownItem>
+            ))}
+          </DropdownMenu>
+        </DropdownContainer>
 
-      <FlexContainer width="80px" justifyContent="center">
-        <StyledLink to="/about">About Us</StyledLink>
-      </FlexContainer>
-      <FlexContainer width="80px" justifyContent="center">
-        <StyledLink to="/contact">Contact Us</StyledLink>
-      </FlexContainer>
-    </Section>
-    <Section flex="2" />
-  </Nav>
-);
+        <Logo />
+
+        <FlexContainer width="85px" justifyContent="center">
+          <StyledLink to="/about">About Us</StyledLink>
+        </FlexContainer>
+        <FlexContainer width="85px" justifyContent="center">
+          <StyledLink to="/contact">Contact Us</StyledLink>
+        </FlexContainer>
+      </Section>
+      <Section flex="2" />
+    </Nav>
+  );
+};
 export default NavBar;

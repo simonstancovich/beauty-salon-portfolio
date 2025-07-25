@@ -8,6 +8,9 @@ import { defaultTheme } from "./styles/theme";
 import { GlobalStyle } from "./styles/global";
 import Layout from "./components/Layout";
 import ServicesPage from "./pages/ServicesPage/ServicesPage";
+import TreatmentsPage from "./pages/TreatmentsPage/TreatmentsPage";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +19,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "services", element: <ServicesPage /> },
-      // more child routes…
+      { path: "treatments", element: <TreatmentsPage /> },
+      { path: "about", element: <AboutUsPage /> },
+      { path: "contact", element: <ContactUsPage /> },
     ],
   },
 ]);
