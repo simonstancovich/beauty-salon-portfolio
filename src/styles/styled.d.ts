@@ -68,6 +68,7 @@ declare module "styled-components" {
       defaultWidth: string;
     };
     radius: {
+      xxs: string;
       xs: string;
       md: string;
       lg: string;
@@ -87,6 +88,7 @@ declare module "styled-components" {
     shadow: {
       xs: string;
       xl: string;
+      text: string;
     };
     scale: {
       xsFull: string;

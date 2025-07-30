@@ -1,8 +1,14 @@
 import { StyledLink } from "../../../../components/StyledLink";
 import { FlexContainer } from "../../../../components/FlexContainer";
 import Card from "../../../../components/Card/Card";
-import IconContainer from "../../../../components/IconContainer";
-import styled from "styled-components";
+import {
+  CardContentWrapper,
+  CardTitle,
+  IconWrapper,
+  MenuWrapper,
+  TreatmentsImageContainer,
+  TreatmentsWrapper,
+} from "./TreatmentsMeny.styled";
 
 interface Services {
   title: string;
@@ -26,72 +32,6 @@ interface TreatmentsMenuProps {
   treatmentsSubtitle?: string;
   treatmentsPreview?: TreatmentsPreview;
 }
-
-const MenuWrapper = styled(FlexContainer)`
-  gap: 8px;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-const CardContentWrapper = styled(FlexContainer)`
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-end;
-  margin: 15px;
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-    flex-direction: column-reverse;
-    align-items: flex-end;
-  }
-`;
-
-const CardTitle = styled.h2`
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    transform: none;
-    white-space: nowrap;
-  }
-`;
-const IconWrapper = styled(IconContainer)`
-  width: 50px;
-  height: 50px;
-  border-radius: 2px;
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-    width: 35px;
-    height: 35px;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    transform: none;
-    white-space: nowrap;
-    font-size: 20px;
-  }
-`;
-
-const TreatmentsWrapper = styled(FlexContainer)`
-  width: 100%;
-  height: 500px;
-  gap: 8px;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 40px 0 100px 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-    margin: 0;
-    padding: 10px;
-    height: 400px;
-  }
-`;
-
-const TreatmentsImageContainer = styled.img`
-  width: 300px;
-  height: 100%;
-  object-fit: cover;
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobile}) {
-    display: none;
-  }
-`;
 
 export const TreatmentsMenu: React.FC<TreatmentsMenuProps> = ({
   services,

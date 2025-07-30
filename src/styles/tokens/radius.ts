@@ -1,4 +1,5 @@
 export const radius = {
+  xxs: "2px",
   xs: "4px",
   md: "8px",
   lg: "12px",
