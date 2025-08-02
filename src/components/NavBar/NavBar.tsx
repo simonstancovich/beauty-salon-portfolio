@@ -1,4 +1,4 @@
-import { useIsMobile } from "../../hooks/UseIsMobile";
+import { useIsMobile } from "../../hooks/useIsMobile";
 import Desktop from "./components/Desktop";
 import Mobile from "./components/Mobile";
 

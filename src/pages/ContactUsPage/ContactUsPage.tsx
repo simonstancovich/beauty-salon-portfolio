@@ -10,10 +10,6 @@ const PageWrapper = styled(FlexContainer)`
   margin: auto;
 `;
 
-const Section = styled.div`
-  width: 100%;
-`;
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
